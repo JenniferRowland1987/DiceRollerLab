@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Design;
+﻿using Microsoft.Win32.SafeHandles;
+using System.ComponentModel.Design;
 static int DieRoll(int sides)
 {
     Random rnd = new Random();
@@ -45,18 +46,50 @@ static string sixSideCrapsRoll (int rollOne, int rollTwo)
         return "...";
     }
 }
+ static int GetDieSides()
+{
+bool validSides = false;
+int sides = 0;
+while (validSides == false)
+    {
+        try
+        {
+           sides = int.Parse(Console.ReadLine());                
+        }
+        catch (FormatException ex)
+        {
+            Console.WriteLine("That is not a number.");  
+            sides = 0;
+        }
+        if (sides >= 1)
+        {
+            validSides = true;
+            sides = sides;
+        }
+        else
+        {
+            Console.WriteLine($"{sides} is not a valid number of sides for the dice to have");
+            sides = 0;
+        }             
+    }
+    return sides;
+}
+
 
 
 while (true)
 {
-    Console.WriteLine("Welcome to the Dice Rolling Game of Rolling Dice");
+    
+
+    Console.WriteLine("Welcome to the Dice Rolling game :)");
     Console.WriteLine("How many sides would you like your dice to have?");
-    int dieSides = int.Parse(Console.ReadLine());
-    if (dieSides <= 0)
-    {
-        Console.WriteLine("that is not a valid number of sides");
-        continue;
-    }
+    int dieSides = GetDieSides();
+
+    //if (dieSides <= 0)
+    //{
+    //    Console.WriteLine("that is not a valid number of sides");
+    //    continue;
+    //}
 
         while (dieSides == 6) 
         {
