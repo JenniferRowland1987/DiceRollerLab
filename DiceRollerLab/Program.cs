@@ -85,13 +85,7 @@ while (true)
     Console.WriteLine("How many sides would you like your dice to have?");
     int dieSides = GetDieSides();
 
-    //if (dieSides <= 0)
-    //{
-    //    Console.WriteLine("that is not a valid number of sides");
-    //    continue;
-    //}
-
-        while (dieSides == 6) 
+         while (dieSides == 6) 
         {
         int rollOne = DieRoll(6);
         int rollTwo = DieRoll(6);
